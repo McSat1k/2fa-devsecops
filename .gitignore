@@ -1,0 +1,26 @@
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# SQLite databases
+*.db
+*.db-*
+data/
+
+# Compiled Go binaries
+*.exe
+*.test
+*.out
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

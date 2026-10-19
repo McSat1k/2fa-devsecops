@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Подключение 2FA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            text-align: center;
+            width: 350px;
+            box-shadow: 0 5px 20px #00000015;
+        }
+        input, button {
+            padding: 12px;
+            margin-top: 12px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Подключение 2FA</h2>
+        <p>Привет, {{.Username}}!</p>
+        <p>Открой Google Authenticator
+           и отсканируй QR-код.</p>
+
+        <img src="{{.QRCode}}"
+             width="220"
+             height="220"
+             alt="QR-код для подключения 2FA">
+
+        <p>Введи шестизначный код из приложения:</p>
+
+        <form method="POST" action="/setup-2fa">
+            <input type="text"
+                   name="code"
+                   placeholder="000000"
+                   inputmode="numeric"
+                   pattern="[0-9]{6}"
+                   maxlength="6"
+                   autocomplete="one-time-code"
+                   required>
+
+            <button type="submit">
+                Подтвердить 2FA
+            </button>
+        </form>
+    </div>
+</body>
+</html>

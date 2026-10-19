@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Подтверждение входа</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            text-align: center;
+            width: 350px;
+            box-shadow: 0 5px 20px #00000015;
+        }
+        input, button {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin-top: 12px;
+        }
+        button {
+            background: #16a34a;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Подтверждение 2FA</h2>
+
+        <p>Пользователь: {{.Username}}</p>
+
+        <p>Введи код из Google Authenticator</p>
+
+        <form method="POST" action="/verify-2fa">
+            <input type="text"
+                   name="code"
+                   placeholder="6-значный код"
+                   inputmode="numeric"
+                   pattern="[0-9]{6}"
+                   maxlength="6"
+                   autocomplete="one-time-code"
+                   required>
+
+            <button type="submit">
+                Подтвердить вход
+            </button>
+        </form>
+    </div>
+</body>
+</html>

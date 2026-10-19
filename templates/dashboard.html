@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eef2f6;
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .status {
+            padding: 14px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        .enabled {
+            background: #e6f7ed;
+            color: #137333;
+        }
+
+        .disabled {
+            background: #fff3e0;
+            color: #b45309;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #bb2d3b;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>Личный кабинет</h1>
+
+        <h2>Добро пожаловать, {{.Username}}!</h2>
+
+        <p>Вы успешно авторизовались.</p>
+
+        {{if .TwoFAEnabled}}
+            <div class="status enabled">
+                ✓ Двухфакторная аутентификация подключена
+            </div>
+        {{else}}
+            <div class="status disabled">
+                Двухфакторная аутентификация не подключена
+            </div>
+        {{end}}
+
+        <form action="/logout" method="POST">
+            <button type="submit">Выйти из аккаунта</button>
+        </form>
+    </div>
+</body>
+</html>

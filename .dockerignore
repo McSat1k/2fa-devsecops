@@ -1,0 +1,12 @@
+
+.git
+.github
+.vscode
+.env
+.env.*
+users.db
+users.db-*
+*.log
+*.exe
+*.test
+data/

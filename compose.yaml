@@ -1,0 +1,20 @@
+
+services:
+  auth2fa:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: auth2fa-app
+
+    restart: unless-stopped
+
+    ports:
+      - "127.0.0.1:8080:8080"
+
+    environment:
+      DB_PATH: /app/data/users.db
+      TOTP_ENCRYPTION_KEY: ${TOTP_ENCRYPTION_KEY:?Set TOTP_ENCRYPTION_KEY in .env}
+
+    volumes:
+      - ./data:/app/data
