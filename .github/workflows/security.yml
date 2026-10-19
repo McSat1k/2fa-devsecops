@@ -26,6 +26,8 @@ jobs:
           cache: true
 
       - name: Run tests
+        env:
+          TOTP_ENCRYPTION_KEY: "0123456789abcdef0123456789abcdef"
         run: go test ./...
 
       - name: Run Go vet
